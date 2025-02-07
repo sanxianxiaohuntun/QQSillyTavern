@@ -27,7 +27,7 @@ QQSillyTavern/
     ├── 世界书1.json     # 世界书文件
     └── ...
 ```
-
+## 使用前stars点个星星用的人少就不维护了
 ## 安装
 
 1. 确保已安装并配置 [LangBot](https://github.com/RockChinQ/LangBot)
