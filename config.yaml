@@ -1,0 +1,88 @@
+# ===== 酒馆系统配置文件 =====
+
+# 系统基础设置
+system:
+  # 是否启用调试模式
+  debug: false
+  
+  # 默认语言
+  language: "zh_CN"
+  
+  # 命令前缀
+  command_prefix: "/"
+
+# 记忆系统设置
+memory:
+  # 是否启用记忆系统
+  enabled: true
+  
+  # 短期记忆设置
+  short_term:
+    # 短期记忆容量上限
+    limit: 50
+    # 每次总结的对话数量
+    summary_batch_size: 30
+    
+  # 长期记忆设置
+  long_term:
+    # 记忆总结提示词
+    summary_prompt: |
+      请总结以下对话的主要内容：
+      {conversations}
+      
+      总结要求：
+      1. 长度控制在200字以内
+      2. 保留重要的事实和情感
+      3. 使用第三人称叙述
+      4. 时态使用过去式
+    
+    # 标签提取设置
+    tags:
+      # 每次总结时提取的最大标签数量
+      max_tags: 50
+      # 标签提取提示词
+      prompt: |
+        请从以下对话中提取关键词和主题标签：
+        {content}
+        
+        提取要求：
+        1. 每个标签限制在1-4个字
+        2. 提取人物、地点、时间、事件、情感等关键信息
+        3. 标签之间用英文逗号分隔
+        4. 总数必须是50个标签
+        5. 每个标签必须独立，不能包含换行符
+        6. 直接返回标签列表，不要其他解释
+        7. 如果内容不足以提取50个标签，可以通过细化和延伸相关概念来补充
+
+# 角色系统设置
+character:
+  # 角色卡存储目录
+  cards_dir: "juese"
+  
+  # 角色卡转换设置
+  conversion:
+    # 源文件目录
+    source_dir: "png"
+    # 默认角色设置
+    defaults:
+      description: "由PNG转换的角色卡"
+      personality: ""
+      first_mes: ""
+      scenario: ""
+      mes_example: ""
+      creator_notes: "通过PNG直接转换（未找到角色数据）"
+
+# 用户系统设置
+user:
+  # 用户数据存储目录
+  data_dir: "users"
+  
+  # 默认用户设置
+  defaults:
+    # 默认用户预设
+    preset: "我是我，你可以根据对话来识别我的性格、年龄和性别。"
+    
+    # 用户目录结构
+    directories:
+      - "group"    # 群聊用户目录
+      - "person"   # 私聊用户目录 

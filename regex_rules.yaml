@@ -1,0 +1,45 @@
+# 正则处理规则配置
+enabled: true  # 是否启用正则处理
+
+# 是否显示处理后的消息
+show_processed: true  # 当消息被处理后是否显示处理结果
+
+rules:
+  # 状态块处理
+  status_block:
+    pattern: '<StatusBlock>.*?</StatusBlock>'
+    enabled: true
+    description: '处理状态块标签'
+    
+  # 移除表情和动作
+  remove_emotes:
+    pattern: '\([^)]*\)|（[^）]*）|\[.*?\]|【.*?】'
+    enabled: true
+    description: '移除括号内的表情和动作描述'
+    
+  # 移除重复标点
+  clean_punctuation:
+    pattern: '([。！？，、])\1+'
+    replace: '\1'  # 保留一个标点
+    enabled: true
+    description: '清理重复的标点符号'
+    
+  # 移除重复字符
+  clean_repeats:
+    pattern: '(.)\1{3,}'
+    replace: '\1\1'  # 保留两个字符
+    enabled: true
+    description: '清理过多重复的字符'
+    
+  # 移除特殊符号
+  remove_symbols:
+    pattern: '[♡♥❤️💕💗💓💝]+'
+    enabled: false  # 默认关闭
+    description: '移除特殊符号和表情'
+    
+  # 用户可以添加更多规则
+  # rule_name:
+  #   pattern: 正则表达式
+  #   replace: 替换内容（可选）
+  #   enabled: true/false
+  #   description: 规则说明 
