@@ -49,7 +49,7 @@ QQSillyTavern/
 
 ### 1. 角色卡格式
 
-角色卡完全兼容SillyTavern格式，可以直接使用SillyTavern的角色卡。将角色卡文件放在 `QQSillyTavern\png` 目录下，重启bot或者重载插件即可。
+角色卡完全兼容SillyTavern格式，可以直接使用SillyTavern的角色卡。将角色卡文件放在 `QQSillyTavern\png` 目录下。
 
 支持的文件格式：
 - YAML格式（推荐）：`角色名.yaml`
