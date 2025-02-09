@@ -1,5 +1,5 @@
 import re
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Tuple
 
 class RegexRule:
     def __init__(self, name: str, pattern: str, replace: str = '', enabled: bool = True, description: str = ''):
@@ -34,11 +34,17 @@ class RegexProcessor:
         self.rules: Dict[str, RegexRule] = {}
         self._load_rules(config.get('rules', {}))
         
+        # 状态块处理相关
+        self.status_pattern = re.compile(r'<StatusBlock>(.*?)</StatusBlock>', re.DOTALL)
+        self.last_status: Dict[str, str] = {}  # 用于存储每个用户的最后一个状态块
+        
     def _load_rules(self, rules_config: dict):
         for name, rule_config in rules_config.items():
             if isinstance(rule_config, str):
+                # 简单格式: "规则名: 正则表达式"
                 self.rules[name] = RegexRule(name, rule_config)
             else:
+                # 详细格式: {pattern, replace, enabled, description}
                 self.rules[name] = RegexRule(
                     name=name,
                     pattern=rule_config['pattern'],
@@ -48,6 +54,7 @@ class RegexProcessor:
                 )
                 
     def process_text(self, text: str) -> str:
+        """处理普通文本的正则替换"""
         if not self.enabled or not text:
             return text
             
@@ -56,7 +63,43 @@ class RegexProcessor:
             result = rule.apply(result)
         return result
         
+    def process_status_block(self, text: str, show_status: bool = False) -> Tuple[str, Optional[str]]:
+        """
+        处理文本中的状态块
+        :param text: 原始文本
+        :param show_status: 是否显示状态块
+        :return: (处理后的文本, 提取的状态块内容)
+        """
+        if not text:
+            return text, None
+            
+        # 查找状态块
+        match = self.status_pattern.search(text)
+        if not match:
+            return text, None
+            
+        status_content = match.group(1).strip()
+        
+        # 移除状态块
+        processed_text = self.status_pattern.sub('', text).strip()
+        
+        if show_status:
+            # 如果需要显示状态，返回状态块内容
+            return processed_text, status_content
+        else:
+            # 否则只返回处理后的文本
+            return processed_text, None
+            
+    def save_status(self, user_id: str, status_content: str):
+        """保存用户的最后一个状态块"""
+        self.last_status[user_id] = status_content
+        
+    def get_last_status(self, user_id: str) -> Optional[str]:
+        """获取用户的最后一个状态块"""
+        return self.last_status.get(user_id)
+        
     def get_rule_info(self, name: str) -> Optional[dict]:
+        """获取规则详细信息"""
         rule = self.rules.get(name)
         if not rule:
             return None
@@ -69,4 +112,5 @@ class RegexProcessor:
         }
         
     def list_rules(self) -> List[dict]:
+        """列出所有规则的详细信息"""
         return [self.get_rule_info(name) for name in self.rules] 
