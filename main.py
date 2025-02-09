@@ -126,6 +126,7 @@ class TavernPlugin(BasePlugin, CommandBase):
         
         # 记忆系统命令
         self.register("/记忆", self._handle_memory_command)
+        self.register("/强制总结", self._handle_force_summary)  # 添加这一行
         
         # 世界书命令
         self.register("/世界书", self._handle_world_book_command)
@@ -552,6 +553,7 @@ class TavernPlugin(BasePlugin, CommandBase):
             "/记忆 间隔 <数量> - 设置总结间隔",
             "/记忆 状态 - 查看当前记忆配置",
             "/记忆 清空记忆 - 清空所有长期记忆",
+            "/记忆 强制总结 - 立即总结当前所有短期记忆",
             "```",
             "\n### 世界书命令",
             "```",
@@ -1825,7 +1827,8 @@ class TavernPlugin(BasePlugin, CommandBase):
                 "/记忆 上限 <数量> - 设置最大记忆数\n"
                 "/记忆 间隔 <数量> - 设置总结间隔\n"
                 "/记忆 状态 - 查看当前记忆配置\n"
-                "/记忆 清空记忆 - 清空所有长期记忆"
+                "/记忆 清空记忆 - 清空所有长期记忆\n"
+                "/记忆 强制总结 - 立即总结当前所有短期记忆"  # 添加这一行
             ])
             ctx.prevent_default()
             return
@@ -1842,6 +1845,8 @@ class TavernPlugin(BasePlugin, CommandBase):
             await self._handle_clear_history(ctx)
         elif subcommand == "重新生成":
             await self._handle_regenerate(ctx)
+        elif subcommand == "强制总结":  # 添加这个分支
+            await self._handle_force_summary(ctx)
         elif subcommand in ["历史", "上限", "间隔"] and len(parts) > 2:
             try:
                 value = int(parts[2])

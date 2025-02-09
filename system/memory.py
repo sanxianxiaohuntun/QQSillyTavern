@@ -357,8 +357,9 @@ class Memory:
                 if not isinstance(summary_data["tags"], list):
                     raise ValueError("'tags' 字段必须是一个数组")
                     
-                # 添加或更新时间戳
+                # 添加或更新时间戳和content字段
                 summary_data["time"] = datetime.now().isoformat()
+                summary_data["content"] = summary_data["summary"]  # 确保content字段存在
                 
                 # 保存到长期记忆
                 long_term = await self.get_long_term()
