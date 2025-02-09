@@ -1,0 +1,16 @@
+[
+  {
+    "role": "assistant",
+    "name": null,
+    "content": "\"怎么是你？\"{{char}}眼底闪过一丝掩藏不住的慌乱。",
+    "tool_calls": null,
+    "tool_call_id": null
+  },
+  {
+    "role": "user",
+    "name": null,
+    "content": "84",
+    "tool_calls": null,
+    "tool_call_id": null
+  }
+]

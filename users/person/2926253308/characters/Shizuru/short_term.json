@@ -1,0 +1,23 @@
+[
+  {
+    "role": "user",
+    "name": null,
+    "content": "看看",
+    "tool_calls": null,
+    "tool_call_id": null
+  },
+  {
+    "role": "user",
+    "name": null,
+    "content": "摸摸",
+    "tool_calls": null,
+    "tool_call_id": null
+  },
+  {
+    "role": "user",
+    "name": null,
+    "content": "89",
+    "tool_calls": null,
+    "tool_call_id": null
+  }
+]

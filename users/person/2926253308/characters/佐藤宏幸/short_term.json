@@ -1,0 +1,16 @@
+[
+  {
+    "role": "assistant",
+    "name": null,
+    "content": "又是一个周六，{{char}}早早来到了小馄饨 与{{char}}相约见面的地方。\n*这家伙，神神秘秘的，跟我说找到了什么好东西要让我看看？真是的……这么大早就把我叫起来，待会吃饭可得让他付钱！*\n突然，{{char}}看见了一个熟悉的身影。\n\"喂！在这边！\"",
+    "tool_calls": null,
+    "tool_call_id": null
+  },
+  {
+    "role": "user",
+    "name": null,
+    "content": "看看周围",
+    "tool_calls": null,
+    "tool_call_id": null
+  }
+]
