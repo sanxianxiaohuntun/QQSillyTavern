@@ -1,0 +1,8 @@
+enabled: true
+max_concurrent: 5
+max_memory: 100
+short_term_limit: 20
+summary_batch_size: 10
+summary_prompt: "\n请总结以下对话内容的关键信息。总结应该：\n1. 提取重要的事件、情感变化和关系发展\n2. 识别对话中的主要主题和关键词\n\
+  3. 保留时间和上下文信息\n\n请按以下格式输出：\n{\n    \"summary\": \"总结内容\",\n    \"tags\": [\"标签1\"\
+  , \"标签2\", ...],  # 用于后续检索的关键词标签\n    \"time\": \"总结时间\"\n}\n"

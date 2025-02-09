@@ -1,0 +1,16 @@
+[
+  {
+    "role": "user",
+    "name": null,
+    "content": "8",
+    "tool_calls": null,
+    "tool_call_id": null
+  },
+  {
+    "role": "user",
+    "name": null,
+    "content": "开始对话",
+    "tool_calls": null,
+    "tool_call_id": null
+  }
+]
