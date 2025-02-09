@@ -30,28 +30,7 @@
 - 👤 用户个人资料设置
 - ⚙️ 灵活的正则处理系统
 
-## 目录结构
 
-```
-QQSillyTavern/
-├── config.yaml          # 主配置文件
-├── regex_rules.yaml     # 正则规则文件
-├── png/                 # 角色卡目录（与SillyTavern通用）
-├── juese/               # 转换后角色卡目录（与SillyTavern通用）
-│   ├── 角色1.yaml       # 角色配置文件
-│   └── ...
-└── shijieshu/          # 世界书目录（与SillyTavern通用）
-    ├── 世界书1.json     # 世界书文件
-    └── ...
-```
-
-## 安装
-
-1. 确保已安装并配置 [LangBot](https://github.com/RockChinQ/LangBot)
-2. 使用管理员账号向机器人发送命令：
-```
-!plugin get <插件仓库地址>
-```
 
 ## 角色系统
 
