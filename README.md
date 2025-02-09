@@ -1,7 +1,16 @@
-# QQ酒馆 - 角色扮演聊天插件 v0.1测试版
+# QQ酒馆 - 角色扮演聊天插件
 
 一个功能丰富的角色扮演聊天插件，支持多角色、记忆系统、世界设定等功能。完全兼容SillyTavern的角色卡和世界书格式。
 
+## 安装
+
+配置完成 [LangBot](https://github.com/RockChinQ/LangBot) 主程序后使用管理员账号向机器人发送命令即可安装：
+
+```
+!plugin get https://github.com/sanxianxiaohuntun/QQSillyTavern
+```
+
+## 使用
 
 
 ## 功能特点
@@ -27,13 +36,13 @@ QQSillyTavern/
     ├── 世界书1.json     # 世界书文件
     └── ...
 ```
-## 使用前stars点个星星用的人少就不维护了
+
 ## 安装
 
 1. 确保已安装并配置 [LangBot](https://github.com/RockChinQ/LangBot)
 2. 使用管理员账号向机器人发送命令：
 ```
-!plugin get https://github.com/sanxianxiaohuntun/QQSillyTavern
+!plugin get <插件仓库地址>
 ```
 
 ## 角色系统
@@ -321,7 +330,5 @@ first_mes: "初次见面的话"  # 支持使用 {{user}} 表示用户名
 
 ### 1. 状态系统
 
-角色回复中可以包含状态信息，使用特定格式：<StatusBlock>包裹住然后用 “/状态” 命令查看状态栏
-```
-<StatusBlock></StatusBlock>
+角色回复中可以包含状态信息，使用特定格式：
 ```

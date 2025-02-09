@@ -3,7 +3,7 @@
 # 系统基础设置
 system:
   # 是否启用调试模式
-  debug: false
+  debug: true
   
   # 默认语言
   language: "zh_CN"
